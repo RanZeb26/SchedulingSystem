@@ -1,0 +1,194 @@
+# Enable Rewrite Engine
+
+RewriteEngine On
+
+# Base directory
+
+RewriteBase /inventory/
+
+# Disable directory listing
+
+Options -Indexes
+
+##################################
+
+# 🔒 Security Headers for Protection
+
+##################################
+
+# Prevent Clickjacking attacks
+
+Header always append X-Frame-Options "SAMEORIGIN"
+
+# Prevent XSS attacks
+
+Header always set X-XSS-Protection "1; mode=block"
+
+# Prevent Content Injection & Force HTTPS
+
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://trusted-cdn.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;"
+
+# Hide Server Information (Prevents Server Exposure)
+
+Header always unset X-Powered-By
+Header always set Server "Secure Server"
+
+# Prevent MIME Sniffing Attacks
+
+Header always set X-Content-Type-Options "nosniff"
+
+# Enforce Secure Connections (HSTS)
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+# Enable Referrer Policy (Prevent leaking data via referrer headers)
+
+Header always set Referrer-Policy "no-referrer-when-downgrade"
+
+# Restrict Features for Better Security
+
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+# Restrict Access to .env Files (Sensitive Credentials)
+
+<FilesMatch "^\.env">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+#####################################
+
+# Admin Routes: /admin ->  Folder
+
+#####################################
+
+# Admin dashboard
+
+RewriteRule ^Dashboard$ Index.php [L]
+
+# function_js / all js list here
+
+RewriteRule ^admin/job$ admin_salemtec/js_function/job.js [L]
+
+# Admin Customer
+
+RewriteRule ^Customer$ Customer.php [L]
+
+# Admin Invoices
+
+RewriteRule ^Invoice$ Invoice.php [L]
+
+# Admin jobsite LIST
+
+RewriteRule ^list$ Qty_Adj_list.php [L]
+RewriteRule ^prlist$ Product_view.php [L]
+RewriteRule ^csview$ Customer_view.php [L]
+RewriteRule ^viewinvoice$ Invoice_view.php [L]
+
+
+# Admin Products Adjustment
+
+RewriteRule ^Adjustment$ Product_adjustment.php [L]
+
+# Admin Quantity Adjustment
+
+RewriteRule ^QuantityAdjustment$ Quantity_adjustment.php [L]
+
+# Admin Products
+
+RewriteRule ^Products$ Products.php [L]
+
+# Admin request
+
+RewriteRule ^Purchases$ Purchases.php [L]
+
+# Admin sales
+
+RewriteRule ^Sales$ Sales.php [L]
+
+# Admin Settings
+
+RewriteRule ^AllSettings$ all_settings.php [L]
+
+# Admin register
+
+RewriteRule ^signup$ Register.php [L]
+
+# Admin logout
+
+RewriteRule ^logout$ logout.php [L]
+
+# Admin login
+
+RewriteRule ^login$ login.php [L]
+
+#####################################
+
+# Fetch and post and update and delete items
+
+#####################################
+
+# Fetch
+
+RewriteRule ^get_prinvlis$ Get/fetch_purchases.php [L]
+RewriteRule ^get_sales$ Get/fetch_sales.php [L]
+RewriteRule ^fetch_invoices$ Get/fetch_invoices.php [L]
+RewriteRule ^fetch_invoice_details$ Get/fetch_invoice_details.php [L]
+
+
+
+
+
+RewriteRule ^admin/get_pritem$ admin_salemtec/get/fetch_pritem.php [L]
+RewriteRule ^admin/get_poinv$ admin_salemtec/get/fetch_poinv.php [L]
+RewriteRule ^admin/get_items$ Get/fetch_qty_item.php [L]
+RewriteRule ^admin/get_item$ admin_salemtec/get/fetch_single_item.php [L]
+RewriteRule ^admin/get_categories$ admin_salemtec/get/fetch_category_facility.php [L]
+RewriteRule ^admin/select_items$ admin_salemtec/get/fetch_items.php [L]
+RewriteRule ^admin/get_listing$ admin_salemtec/get/fetch_itemstat.php [L]
+
+# Add post
+
+RewriteRule ^save_items$ Add/save_selected_items.php [L]
+RewriteRule ^save_adj_desc$ Add/save_adj_desc.php [L]
+RewriteRule ^add_customer$ Add/save_customer.php [L]
+RewriteRule ^add_category$ Add/save_category.php [L]
+RewriteRule ^add_unit$ Add/save_unit.php [L]
+RewriteRule ^add_invoice$ Add/save_invoice.php [L]
+
+
+RewriteRule ^admin/add_prinv$ admin_salemtec/post/insert_prinv.php [L]
+RewriteRule ^admin/add_pritems$ admin_salemtec/post/insert_pritems.php [L]
+RewriteRule ^admin/add_adjitem$ admin_salemtec/post/insert_adjitem.php [L]
+
+# Update
+
+RewriteRule ^update_sales$ Update/update_product.php [L]
+RewriteRule ^update_adj_desc$ Update/update_adj_desc.php [L]
+RewriteRule ^Update_Customer$ Update/update_customer.php [L]
+
+# Delete
+
+RewriteRule ^delete_item$ Delete/delete_item.php [L]
+RewriteRule ^delete_adj_desc$ Delete/delete_adj_desc.php [L]
+RewriteRule ^delete_customer$ Delete/delete_customer.php [L]
+RewriteRule ^delete_invoice$ Delete/delete_invoice.php [L]
+
+RewriteRule ^admin/delete_pr$ admin_salemtec/delete/delete_prinv.php [L]
+#####################################
+
+# Admin Routes: /user -> user_salemtec Folder
+
+#####################################
+
+# User dashboard
+
+RewriteRule ^user/dashboard$ user_salemtec/dashboard.php [L]
+
+# User inventory
+
+RewriteRule ^user/inventory$ user_salemtec/inventory.php [L]
+
+# FETCH INVENTORY
+
+RewriteRule ^user/get_items$ user_salemtec/get/fetch_inventory.php [L]

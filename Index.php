@@ -13,7 +13,7 @@ include 'Get/fetch_active_items.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Inventory</title>
+  <title>Scheduling System</title>
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="vendors/typicons.font/font/typicons.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
