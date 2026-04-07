@@ -112,7 +112,7 @@ RewriteRule ^AllSettings$ all_settings.php [L]
 
 # Admin register
 
-RewriteRule ^signup$ Register.php [L]
+# RewriteRule ^signup$ Register.php [L]
 
 # Admin logout
 
@@ -120,7 +120,7 @@ RewriteRule ^logout$ logout.php [L]
 
 # Admin login
 
-RewriteRule ^login$ login.php [L]
+RewriteRule ^login$ Login.php [L]
 
 #####################################
 

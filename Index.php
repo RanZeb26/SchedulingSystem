@@ -5,7 +5,6 @@ if (!isset($_SESSION['logged_in'])) {
     exit;
 }
 include 'config/db.php';
-include 'Get/fetch_active_items.php';
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +51,7 @@ include 'Get/fetch_active_items.php';
         </div>
       </div>
       <!--Sidebar-->
-      <?php include 'sidebar.php'; ?>
+      <?php include 'Sidebar/sidebar.php'; ?>
 <!--Main Panel-->
       <div class="main-panel">
         <div class="content-wrapper">
