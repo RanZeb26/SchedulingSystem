@@ -104,7 +104,7 @@ RewriteRule ^Purchases$ Purchases.php [L]
 
 # Admin Schedule
 
-RewriteRule ^Schedule$ Schedule.php [L]
+RewriteRule ^Schedule$ Scheduled.php [L]
 
 # Admin Settings
 
@@ -112,15 +112,15 @@ RewriteRule ^AllSettings$ all_settings.php [L]
 
 # Admin register
 
-RewriteRule ^signup$ Security/Register.php [L]
+RewriteRule ^signup$ Register.php [L]
 
 # Admin logout
 
-RewriteRule ^logout$ Security/logout.php [L]
+RewriteRule ^logout$ logout.php [L]
 
 # Admin login
 
-RewriteRule ^login$ Security/Login.php [L]
+RewriteRule ^login$ Login.php [L]
 
 #####################################
 

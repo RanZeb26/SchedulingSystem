@@ -55,7 +55,7 @@
               </ul>
             </div>
           </li>
-          <!--
+          
         <li class="nav-item">
             <a class="nav-link" href="Products">
               <i class="typcn typcn-dropbox menu-icon"></i>
@@ -98,7 +98,7 @@
           </li>-->
                     </li>
                   <li class="nav-item">
-            <a class="nav-link" href="Scheduled">
+            <a class="nav-link" href="Schedule">
               <i class="typcn typcn-briefcase menu-icon"></i>
               <span class="menu-title">Schedule</span>
             </a>
