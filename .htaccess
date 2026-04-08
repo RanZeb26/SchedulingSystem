@@ -4,7 +4,7 @@ RewriteEngine On
 
 # Base directory
 
-RewriteBase /SchedulingSystem/
+RewriteBase /schedulingsystem/
 
 # Disable directory listing
 
@@ -112,15 +112,15 @@ RewriteRule ^AllSettings$ all_settings.php [L]
 
 # Admin register
 
-# RewriteRule ^signup$ Register.php [L]
+RewriteRule ^signup$ Security/Register.php [L]
 
 # Admin logout
 
-RewriteRule ^logout$ logout.php [L]
+RewriteRule ^logout$ Security/logout.php [L]
 
 # Admin login
 
-RewriteRule ^login$ Login.php [L]
+RewriteRule ^login$ Security/Login.php [L]
 
 #####################################
 

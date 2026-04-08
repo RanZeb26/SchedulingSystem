@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config/db.php"; // Ensure database connection
+include "../config/db.php"; // Ensure database connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';

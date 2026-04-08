@@ -1,5 +1,5 @@
 <?php
-include "config/db.php"; // Database connection
+include "../config/db.php"; // Database connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sign Up</title>
+  <title>Scheduling System</title>
   <!-- base:css -->
   <link rel="stylesheet" href="vendors/typicons.font/font/typicons.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
