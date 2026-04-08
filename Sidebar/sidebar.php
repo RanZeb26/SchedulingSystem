@@ -41,6 +41,7 @@
               <span class="menu-title">Calendar</span>
             </a>
           </li>-->
+                    <!-- 
             <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
               <i class="typcn typcn-dropbox menu-icon"></i>
@@ -66,7 +67,7 @@
               <i class="typcn typcn-shopping-cart menu-icon"></i>
               <span class="menu-title">Purchases</span>
             </a>
-          </li>-->
+          </li>
             <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#sales" aria-expanded="false" aria-controls="sales">
               <i class="typcn typcn-briefcase menu-icon"></i>
@@ -81,7 +82,7 @@
               </ul>
             </div>
           </li>
-          <!-- 
+
         <li class="nav-item">
             <a class="nav-link" href="#">
               <i class="typcn typcn-shopping-bag menu-icon"></i>
@@ -97,7 +98,7 @@
           </li>-->
                     </li>
                   <li class="nav-item">
-            <a class="nav-link" href="Scheduled.php">
+            <a class="nav-link" href="Scheduled">
               <i class="typcn typcn-briefcase menu-icon"></i>
               <span class="menu-title">Schedule</span>
             </a>

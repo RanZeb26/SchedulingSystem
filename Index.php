@@ -4,7 +4,7 @@ if (!isset($_SESSION['logged_in'])) {
     header("Location: login");
     exit;
 }
-include 'config/db.php';
+
 
 ?>
 <!DOCTYPE html>

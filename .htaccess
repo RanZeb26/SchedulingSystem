@@ -4,7 +4,7 @@ RewriteEngine On
 
 # Base directory
 
-RewriteBase /inventory/
+RewriteBase /SchedulingSystem/
 
 # Disable directory listing
 
@@ -102,9 +102,9 @@ RewriteRule ^Products$ Products.php [L]
 
 RewriteRule ^Purchases$ Purchases.php [L]
 
-# Admin sales
+# Admin Schedule
 
-RewriteRule ^Sales$ Sales.php [L]
+RewriteRule ^Schedule$ Schedule.php [L]
 
 # Admin Settings
 
@@ -192,3 +192,13 @@ RewriteRule ^user/inventory$ user_salemtec/inventory.php [L]
 # FETCH INVENTORY
 
 RewriteRule ^user/get_items$ user_salemtec/get/fetch_inventory.php [L]
+
+#####################################
+
+# Admin Routes: /user -> user_salemtec Folder
+
+#####################################
+
+# User dashboard
+
+RewriteRule ^user/dashboard$ user_salemtec/dashboard.php [L]
