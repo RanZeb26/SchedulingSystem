@@ -354,7 +354,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Edit Duty</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               </div>
               <div class="modal-body">
                 <input type="hidden" name="edit_schedule_id" id="edit_schedule_id">
@@ -395,7 +395,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Delete Duty</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               </div>
               <div class="modal-body">
                 <input type="hidden" name="delete_schedule_id" id="delete_schedule_id">
@@ -410,11 +410,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Add Duty Post Modal -->
         <div class="modal fade" id="addPostModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
+          <div class="modal-dialog modal-md">
             <form method="POST" class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Add Duty Post</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               </div>
               <div class="modal-body">
                 <input type="hidden" name="add_post" value="1" />
@@ -444,11 +444,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Add Personnel Modal -->
         <div class="modal fade" id="addPersonnelModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
+          <div class="modal-dialog modal-md">
             <form method="POST" class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Add Personnel</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
                 <input type="hidden" name="add_personnel" value="1" />
@@ -467,11 +467,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Assign Duty Modal -->
         <div class="modal fade" id="assignDutyModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
+          <div class="modal-dialog modal-md">
             <form method="POST" class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Assign Duty</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               </div>
               <div class="modal-body">
                 <div class="mb-3">
@@ -555,31 +555,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Drop handlers
     document.querySelectorAll('.dropzone').forEach(zone => {
-      zone.addEventListener('dragover', e => {
-        e.preventDefault();
-        zone.classList.add('drag-over');
-      });
-      zone.addEventListener('dragleave', e => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+  e.preventDefault();
+  zone.classList.remove('drag-over');
 
-      zone.addEventListener('drop', e => {
-        e.preventDefault();
-        zone.classList.remove('drag-over');
-        try {
-          const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-        
-          const form = new FormData();
-          form.append('move_schedule_id', data.schedule_id);
-          form.append('new_date', zone.dataset.date);
-          form.append('new_post_id', zone.dataset.postId);
+  const data = JSON.parse(e.dataTransfer.getData('text/plain'));
 
-          fetch('', { method: 'POST', body: form })
-            .then(r => r.json())
-            .then(j => { if (j.ok) location.reload(); else location.reload(); })
-            .catch(err => { console.error(err); location.reload(); });
-        } catch (err) {
-          console.error('Invalid drag data', err);
-        }
-      });
+  const form = new FormData();
+  form.append('move_schedule_id', data.schedule_id);
+  form.append('new_date', zone.dataset.date);
+  form.append('new_post_id', zone.dataset.postId);
+
+  fetch('', { method: 'POST', body: form })
+    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        // ✅ MOVE ELEMENT WITHOUT RELOAD
+        const draggedEl = document.querySelector(`[data-schedule-id="${data.schedule_id}"]`);
+        zone.appendChild(draggedEl);
+      } else {
+        alert("Move failed");
+      }
+    });
+});
+zone.addEventListener('dragover', e => {
+  e.preventDefault();
+  zone.classList.add('drag-over');
+});
+zone.addEventListener('dragleave', e => {
+  zone.classList.remove('drag-over');
+});
     });
   });
   </script>
